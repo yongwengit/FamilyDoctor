@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  [title: MyString
+  text: MyText
+  authorId: 
+  startTime: 2013-10-02
+  endTime: 2013-10-02
+  createTime: 2013-10-02
+  type: 
+  privilege: 
+
+two:
+  [title: MyString
+  text: MyText
+  authorId: 
+  startTime: 2013-10-02
+  endTime: 2013-10-02
+  createTime: 2013-10-02
+  type: 
+  privilege: 

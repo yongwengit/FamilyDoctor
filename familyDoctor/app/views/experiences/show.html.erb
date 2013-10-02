@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>title:</b>
+  <%= @experience.title %>
+</p>
+
+<p>
+  <b>Text:</b>
+  <%= @experience.text %>
+</p>
+
+<p>
+  <b>Authorid:</b>
+  <%= @experience.authorId %>
+</p>
+
+<p>
+  <b>Starttime:</b>
+  <%= @experience.startTime %>
+</p>
+
+<p>
+  <b>Endtime:</b>
+  <%= @experience.endTime %>
+</p>
+
+<p>
+  <b>Createtime:</b>
+  <%= @experience.createTime %>
+</p>
+
+<p>
+  <b>Category:</b>
+  <%= @experience.category %>
+</p>
+
+<p>
+  <b>Privilege:</b>
+  <%= @experience.privilege %>
+</p>
+
+
+<%= link_to 'Edit', edit_experience_path(@experience) %> |
+<%= link_to 'List', experiences_path %>

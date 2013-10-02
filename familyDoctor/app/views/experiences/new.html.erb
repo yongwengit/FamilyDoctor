@@ -1,0 +1,28 @@
+<% if session[:user] == nil then %>
+    <div class="warningdiv">
+      <h1>To share your stories, your must <a href="/family_doctor/login">login</a></h1>
+    </div>
+<% else %>
+<div class="contentdiv">
+  <table class="contenttable">
+      <tr style="background-color: #93A5C4">
+        <td>
+          <h1>Tell Your Story</h1>
+        </td>
+      </tr>
+    <tr>
+      <td>
+        <%= render 'form' %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <%= link_to 'List', experiences_path %>
+      </td>
+    </tr>
+  </table>
+</div>
+<% end %>
+
+
+

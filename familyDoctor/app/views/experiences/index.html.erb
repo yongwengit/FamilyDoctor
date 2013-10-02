@@ -1,0 +1,26 @@
+<h1>Listing experiences</h1>
+
+<div class="contentdiv">
+
+<% @experiences.each do |experience| %>
+  <div style="border-bottom-style: inset; width: 85%; border-bottom-width: 1px">
+    <table style="width: 100%">
+      <tr>
+        <td class="tdright"><%= link_to experience.title, experience %></td>
+      </tr>
+      <tr>
+        <td style="text-align: center"><%= experience.text %></td>
+      </tr>
+      <tr>
+        <td class="tdleft">
+          <%= link_to 'Show', experience %>
+          <%= link_to 'Edit', edit_experience_path(experience) %>
+          <%= link_to 'Destroy', experience, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+    </table>
+  </div>
+<% end %>
+</div>
+<br />
+<%= link_to 'New Experience', new_experience_path %>

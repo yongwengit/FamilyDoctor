@@ -1,0 +1,49 @@
+<%= form_for(@experience) do |f| %>
+  <table class="contenttable" border="2">
+    <tr>
+      <td colspan="2">
+        <% if @experience.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@experience.errors.count, "error") %> prohibited this experience from being saved:</h2>
+
+              <ul>
+                <% @experience.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                <% end %>
+              </ul>
+            </div>
+        <% end %>
+      </td>
+    </tr>
+  <tr class="field">
+    <td class="tdleft"><%= f.label :title %></td>
+    <td class="tdright"><%= f.text_field :title %></td>
+  </tr>
+  <tr class="field">
+    <td class="tdleft"><%= f.label :startTime %></td>
+    <td class="tdright"><%= f.date_select :startTime %></td>
+  </tr>
+  <tr class="field">
+    <td class="tdleft"><%= f.label :endTime %></td>
+    <td class="tdright"><%= f.date_select :endTime %></td>
+  </tr>
+  <tr class="field">
+     <td class="tdleft"><%= f.label :category %></td>
+     <td class="tdright"><%= f.select(:category ,{"beautify" => 1, "whitening" => 2, "hypertension" => 3, "diabetes" => 4}) %></td>
+  </tr>
+
+  <tr class="field">
+     <td class="tdleft"><%= f.label :privilege %></td>
+     <td class="tdright"><%= f.select( :privilege, { "all visible" => 1,  "friends visible" => 2, "private" => 3}) %></td>
+  </tr>
+  <tr class="field">
+      <td class="tdleft"><%= f.label :text %></td>
+      <td class="tdright"><%= f.text_area :text %></td>
+  </tr>
+   <%= f.hidden_field(:createTime) %>
+   <%= f.hidden_field(:authorId) %>
+  <tr class="actions">
+    <td colspan="2"><%= f.submit %></td>
+  </tr>
+  </table>
+<% end %>
