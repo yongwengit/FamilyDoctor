@@ -95,7 +95,6 @@ class ExperiencesController < ApplicationController
   # PUT /experiences/1.json
   def update
     @experience = Experience.find(params[:id])
-
     respond_to do |format|
       if @experience.update_attributes(params[:experience])
         format.html { redirect_to @experience, notice: 'Experience was successfully updated.' }

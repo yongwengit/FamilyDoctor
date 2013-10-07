@@ -4,7 +4,7 @@
   <p style="background-color: #FFFFCC"><b class="titleFont">Body</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <% if session[:userid] == @experience.authorId %>
         <%= link_to 'Edit', edit_experience_path(@experience) %> |
-        <%= link_to 'Destroy', @experience, method: :delete, data: { confirm: 'Are you sure?' } %> |
+        <%= link_to 'Destroy',experience_path(@experience), :method => :delete, data: { confirm: 'Are you sure?' } %> |
     <% end %>
   <%= link_to 'To List', experiences_path %>
   </p>
