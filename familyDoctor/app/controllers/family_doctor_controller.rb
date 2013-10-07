@@ -13,10 +13,10 @@ class FamilyDoctorController < ApplicationController
       session[:username] =user[0].username
       session[:userid]=user[0].id
       @user=session[:user]
-      redirect_to :action=>"index",:controller=>"family_doctor"
+      redirect_to :action=>'index',:controller=>'family_doctor'
     else
       session[:user]=nil
-      flash[:notice]="login failed!"
+      flash[:notice]='login failed!'
     end
   end
 

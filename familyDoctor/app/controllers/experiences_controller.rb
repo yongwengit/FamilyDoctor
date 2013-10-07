@@ -9,6 +9,18 @@ class ExperiencesController < ApplicationController
       @experiences = Experience.find_all_by_privilege(1)
     end
 
+    userid = params[:userid]
+    if(userid != nil)
+      @experiences = Experience.find_all_by_authorId(userid)
+    end
+
+    @experiences.each do |experience|
+      commentsForExp = Comment.find_by_sql("select * from comments where experienceId='#{experience.id}' order by createTime desc limit 3")
+      Comment.setAuthorNameBatch(commentsForExp)
+      experience.setComments commentsForExp
+      experience.setAuthorName(User.find(experience.authorId).username)
+    end
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @experiences }
@@ -19,10 +31,29 @@ class ExperiencesController < ApplicationController
   # GET /experiences/1.json
   def show
     @experience = Experience.find(params[:id])
+    @experience.setAuthorName(User.find(@experience.authorId).username)
+    case @experience.category
+      when 1
+        @experience.setCategoryName 'beautify'
+      when 2
+        @experience.setCategoryName 'whitening'
+      when 3
+        @experience.setCategoryName 'hypertension'
+      when 4
+        @experience.setCategoryName 'diabetes'
+      else
+        @experience.setCategoryName nil
+    end
+
+    @experience.setComments(Comment.find_all_by_experienceId(@experience.id))
+    Comment.setAuthorNameBatch(@experience.getComments)
+
+    @comment = Comment.new
+    @comment.experienceId = @experience.id
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @experience }
+      format.json { render json: [@experience, @comment]}
     end
   end
 

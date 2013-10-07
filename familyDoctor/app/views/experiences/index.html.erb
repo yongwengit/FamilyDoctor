@@ -1,26 +1,57 @@
-<h1>Listing experiences</h1>
 
 <div class="contentdiv">
-
-<% @experiences.each do |experience| %>
+  <div style="border-bottom-style: inset; width: 85%; border-bottom-width: 1px">
+  <table style="width: 100%">
+    <tr>
+      <td><h1>Listing experiences</h1></td>
+      <td style="text-align: right"><%= link_to 'New Experience', new_experience_path %></td>
+    </tr>
+  </table>
+  </div>
+  <% @experiences.each do |experience| %>
   <div style="border-bottom-style: inset; width: 85%; border-bottom-width: 1px">
     <table style="width: 100%">
       <tr>
-        <td class="tdright"><%= link_to experience.title, experience %></td>
+        <td><a href="/experiences?userid=<%= experience.authorId %>"><%= experience.getAuthorName %></a></td>
+        <td style="text-align: right">published in &nbsp;&nbsp;<%= experience.createTime %></td>
       </tr>
       <tr>
-        <td style="text-align: center"><%= experience.text %></td>
+        <td colspan="2" class="tdright" style="font-weight: bold; font-size: 24"><%= link_to experience.title, experience %></td>
       </tr>
       <tr>
-        <td class="tdleft">
-          <%= link_to 'Show', experience %>
-          <%= link_to 'Edit', edit_experience_path(experience) %>
-          <%= link_to 'Destroy', experience, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <td colspan="2" class="tdright"><%= experience.text %></td>
+      </tr>
+      <% if session[:userid] == experience.authorId %>
+          <tr>
+            <td class="tdleft" colspan="2">
+              <%= link_to 'Edit', edit_experience_path(experience) %>
+              <%= link_to 'Destroy', experience, method: :delete, data: { confirm: 'Are you sure?' } %>
+            </td>
+          </tr>
+      <% end %>
+      <% if experience.getComments != nil %>
+      <tr>
+        <td colspan="2" class="tdright" style="font-weight: bold; font-size: 24;border-top-style: dashed; border-top-width: 1px">
+          Comment List
         </td>
       </tr>
+      <% experience.getComments.each do |comment| %>
+        <tr>
+          <td>
+            <a href="/experiences?userid=<%= comment.authorId %>"><%= comment.getAuthorName %></a>
+          </td>
+          <td style="text-align: right">commented in &nbsp;&nbsp;<%= comment.createTime %></td>
+        </tr>
+        <tr>
+          <td>
+              <%= comment.content %>
+          </td>
+        </tr>
+        <% end %>
+      <% end %>
     </table>
   </div>
-<% end %>
+  <% end %>
 </div>
 <br />
-<%= link_to 'New Experience', new_experience_path %>
+

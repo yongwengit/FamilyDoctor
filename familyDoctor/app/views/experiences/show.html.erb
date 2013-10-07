@@ -1,29 +1,33 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>title:</b>
-  <%= @experience.title %>
-</p>
+<div class="contentdiv">
+  <p style="background-color: #FFFFCC"><b class="titleFont">Body</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <% if session[:userid] == @experience.authorId %>
+        <%= link_to 'Edit', edit_experience_path(@experience) %> |
+        <%= link_to 'Destroy', @experience, method: :delete, data: { confirm: 'Are you sure?' } %> |
+    <% end %>
+  <%= link_to 'To List', experiences_path %>
+  </p>
+  <div style="border-bottom-style: inset; width: 85%; border-bottom-style: none">
+    <p>
+        <b>Title:</b>
+        <%= @experience.title %>
+    </p>
+    <% if session[:userid] != @experience.authorId  %>
+        <p>
+          <b>AuthorName:</b>
+          <a href="/experiences?userid=<%= @experience.authorId %>"><%= @experience.getAuthorName %></a>
+        </p>
+    <% end %>
+    <p>
+      <b>Starttime:</b>
+      <%= @experience.startTime %>
+    </p>
 
-<p>
-  <b>Text:</b>
-  <%= @experience.text %>
-</p>
-
-<p>
-  <b>Authorid:</b>
-  <%= @experience.authorId %>
-</p>
-
-<p>
-  <b>Starttime:</b>
-  <%= @experience.startTime %>
-</p>
-
-<p>
-  <b>Endtime:</b>
-  <%= @experience.endTime %>
-</p>
+    <p>
+      <b>Endtime:</b>
+      <%= @experience.endTime %>
+    </p>
 
 <p>
   <b>Createtime:</b>
@@ -32,14 +36,39 @@
 
 <p>
   <b>Category:</b>
-  <%= @experience.category %>
+  <%= @experience.getCategoryName %>
 </p>
+    <p>
+      <b>Content:</b>
+      <%= @experience.text %>
+    </p>
+</div>
 
-<p>
-  <b>Privilege:</b>
-  <%= @experience.privilege %>
-</p>
+<p style="background-color: #FFFFCC"><b class="titleFont">Comments List</b></p>
+<% @experience.getComments.each do |comment| %>
+  <table style="width: 85%">
+     <tr>
+        <td>
+          &nbsp;&nbsp;<a href="/experiences?userid=<%= comment.authorId %>"><%= comment.getAuthorName %></a>
+        </td>
+        <td style="text-align: right">commented in &nbsp;&nbsp;<%= comment.createTime %></td>
+     </tr>
+     <tr>
+        <td>
+          &nbsp;&nbsp;<%= comment.content %>
+        </td>
+     </tr>
+  </table>
+<% end %>
 
-
-<%= link_to 'Edit', edit_experience_path(@experience) %> |
-<%= link_to 'List', experiences_path %>
+<p style="background-color: #FFFFCC"><b class="titleFont">Add Comment</b></p>
+ <div style="width: 85%; vertical-align: middle">
+ <table>
+ <%= form_for(@comment) do |f| %>
+    <%= f.hidden_field :experienceId %>
+    <%= f.text_area :content %> <br>
+    <%= f.submit 'add comment' %>
+  <% end %>
+ </table>
+  </div>
+</div>
