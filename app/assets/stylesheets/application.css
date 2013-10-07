@@ -1,0 +1,143 @@
+@charset "utf-8";
+body {
+    font: 100%/1.4 Verdana, Arial, Helvetica, sans-serif;
+    background: #4E5869;
+    margin: 0;
+    padding: 0;
+    color: #000;
+}
+
+ul, ol, dl {
+    padding: 0;
+    margin: 0;
+}
+h1, h2, h3, h4, h5, h6, p {
+    margin-top: 0;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+a img {
+    border: none;
+}
+
+a:link {
+    color:#414958;
+    text-decoration: underline;
+}
+a:visited {
+    color: #4E5869;
+    text-decoration: underline;
+}
+a:hover, a:active, a:focus {
+    text-decoration: none;
+}
+
+.container {
+    width: 80%;
+    max-width: 1260px;
+    min-width: 780px;
+    background: #FFF;
+    margin: 0 auto;
+}
+
+.header {
+    background: #6F7D94;
+}
+
+.sidebar1 {
+    float: left;
+    width: 20%;
+    background: #93A5C4;
+    padding-bottom: 0px;
+}
+.content {
+    padding: 10px 0;
+    width: 80%;
+    float: left;
+}
+
+.content ul, .content ol {
+    padding: 0 15px 15px 40px;
+}
+
+ul.nav {
+    list-style: none;
+    border-top: 1px solid #666;
+    margin-bottom: 0px;
+}
+ul.nav li {
+    border-bottom: 1px solid #666;
+    text-align: center;
+    background-color: #9CC
+}
+
+ul.nav a, ul.nav a:visited {
+    padding: 5px 5px 5px 15px;
+    display: block;
+    text-decoration: none;
+    color: #000;
+}
+ul.nav div {
+    background-color: #39C;
+    font-weight: bold;
+}
+ul.nav a:hover, ul.nav a:active, ul.nav a:focus {
+    background: #6F7D94;
+    color: #FFF;
+}
+
+.footer {
+    padding: 10px 0;
+    background: #6F7D94;
+    position: relative;
+    clear: both;
+}
+
+
+.fltrt {
+    float: right;
+    margin-left: 8px;
+}
+.fltlft {
+    float: left;
+    margin-right: 8px;
+}
+.clearfloat {
+    clear:both;
+    height:0;
+    font-size: 1px;
+    line-height: 0px;
+}
+
+.contentdiv {
+    height: 100%;
+    width: 100%;
+    vertical-align: middle;
+}
+.contenttable {
+    text-align: center;
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.tdleft {
+    text-align: right;
+}
+.tdright {
+    text-align: left;
+}
+
+.warningdiv {
+    width: 25em;
+    padding: 0 4em;
+    margin: 4em auto 0 auto;
+    border: 1px solid #ccc;
+    border-right-color: #999;
+    border-bottom-color: #999;
+}
+
+.titleFont {
+    font-size: 24;
+    font-weight: bold;
+    color: #0033FF;
+}

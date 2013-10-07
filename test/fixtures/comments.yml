@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  autorId: 
+  experienceId: 
+  content: 
+  createTime: 2013-10-06
+
+two:
+  autorId: 
+  experienceId: 
+  content: 
+  createTime: 2013-10-06
